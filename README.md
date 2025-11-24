@@ -17,7 +17,7 @@
 
 ### На веб-приложение:
 
-Netlify: https://questionnaire-njkadsfh.netlify.app
+Netlify: https://glittering-speculoos-7f0e57.netlify.app/
 
 ### На сверстанные макеты:
 

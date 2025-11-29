@@ -35,12 +35,12 @@ export default class App {
   render() {
     let template, html;
     if (this.state.currentPage === 'page500') {
-      template = Handlebars.compile(Pages.Page500);
-      html = template({});
+      template = Handlebars.compile(Pages.ErrorPage);
+      html = template({codeError: '500', message: 'Мы уже фиксим'});
     }
     if (this.state.currentPage === 'page400') {
-      template = Handlebars.compile(Pages.Page400);
-      html = template({});
+      template = Handlebars.compile(Pages.ErrorPage);
+      html = template({codeError: '400', message: 'Не туда попали'});
     }
 
     this.appElement.textContent = '';

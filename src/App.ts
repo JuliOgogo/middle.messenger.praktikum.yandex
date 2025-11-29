@@ -34,21 +34,29 @@ export default class App {
   }
 
   render() {
-    let template;
+    let template, html;
+    if (this.state.currentPage === 'page500') {
+      template = Handlebars.compile(Pages.Page500);
+      html = template({});
+    }
     if (this.state.currentPage === 'createQuestionnaire') {
       template = Handlebars.compile(Pages.CreatePage);
-      this.appElement.innerHTML = template({
+      html = template({
         questions: this.state.questions,
         createButtonEnabled: this.state.questions.length == 0
       });
-    } else {
+    }
+    if (this.state.currentPage === 'answerQuestionnaire') {
       template = Handlebars.compile(Pages.AnswersPage);
-      this.appElement.innerHTML = template({
+      html = template({
         questions: mockQuestions,
         answers: mockAnswers,
         answerOptions: ['Yes', 'No', 'Maybe'],
       });
     }
+
+    this.appElement.textContent = '';
+    this.appElement.insertAdjacentHTML('beforeend', html);
     this.attachEventListeners();
   }
 

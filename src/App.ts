@@ -1,16 +1,16 @@
 import Handlebars from 'handlebars';
 import * as Pages from './pages';
-import { mockQuestions, mockAnswers } from './mockData.js';
-import './helpers/handlebarsHelpers.js';
+import { mockQuestions, mockAnswers } from './mockData.ts';
+import './helpers/handlebarsHelpers.ts';
 
 // Register partials
-import Input from './components/Input.js';
-import Button from './components/Button.js';
-import Select from './components/Select.js';
-import ErrorMessage from './components/ErrorMessage.js';
-import Link from './components/Link.js';
-import Label from './components/Label.js';
-import Footer from './components/Footer.js';
+import Input from './components/Input.ts';
+import Button from './components/Button.ts';
+import Select from './components/Select.ts';
+import ErrorMessage from './components/ErrorMessage.ts';
+import Link from './components/Link.ts';
+import Label from './components/Label.ts';
+import Footer from './components/Footer.ts';
 
 Handlebars.registerPartial('Input', Input);
 Handlebars.registerPartial('Button', Button);
@@ -21,6 +21,9 @@ Handlebars.registerPartial('Label', Label);
 Handlebars.registerPartial('Footer', Footer);
 
 export default class App {
+  private state: { questions: string[]; answers: string[]; currentPage: string };
+  private appElement: any;
+
   constructor() {
     this.state = {
       currentPage: 'createQuestionnaire',
@@ -35,12 +38,12 @@ export default class App {
     if (this.state.currentPage === 'createQuestionnaire') {
       template = Handlebars.compile(Pages.CreatePage);
       this.appElement.innerHTML = template({
-        questions: this.state.questions, 
+        questions: this.state.questions,
         createButtonEnabled: this.state.questions.length == 0
       });
     } else {
       template = Handlebars.compile(Pages.AnswersPage);
-      this.appElement.innerHTML = template({ 
+      this.appElement.innerHTML = template({
         questions: mockQuestions,
         answers: mockAnswers,
         answerOptions: ['Yes', 'No', 'Maybe'],
@@ -53,30 +56,34 @@ export default class App {
     if (this.state.currentPage === 'createQuestionnaire') {
       const addButton = document.getElementById('add-question');
       const createButton = document.getElementById('create-questionnaire');
-      
-      addButton.addEventListener('click', () => this.addQuestion());
-      createButton.addEventListener('click', () => this.createQuestionnaire());
+
+      if (addButton && createButton) {
+        addButton.addEventListener('click', () => this.addQuestion());
+        createButton.addEventListener('click', () => this.createQuestionnaire());
+      }
     } else {
       const submitButton = document.getElementById('submit-answers');
-      submitButton.addEventListener('click', () => this.submitAnswers());
+      if (submitButton) {
+        submitButton.addEventListener('click', () => this.submitAnswers());
+      }
     }
 
     const footerLinks = document.querySelectorAll('.footer-link');
     footerLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
+      link.addEventListener('click', (e: any) => {
         e.preventDefault();
         this.changePage(e.target.dataset.page);
       });
     });
   }
 
-  changePage(page) {
+  changePage(page: string) {
     this.state.currentPage = page;
     this.render();
   }
 
   addQuestion() {
-    const questionInput = document.getElementById('question-input');
+    const questionInput: any = document.getElementById('question-input');
     if (questionInput.value.trim()) {
       this.state.questions.push(questionInput.value);
       questionInput.value = '';

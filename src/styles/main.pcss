@@ -1,29 +1,36 @@
 :root {
-  --primary-color: #3498db;
-  --secondary-color: #2c3e50;
-  --background-color: #f4f4f4;
-  --text-color: #333;
+  --primary-color: #3369F3;
+  --secondary-color: #E4EDFD;
+  --background-color: #FFFFFF;
+  --text-color: #1E1E1E;
+  --secondary-text-color: #999999;
   --error-color: #e74c3c;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  color: var(--text-color);
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  font-family: Inter, sans-serif;
 }
 
 .app {
   background-color: var(--background-color);
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+  width: 100vw;
 }
 
 h1, h2, h3 {
-  color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+h1 {
+  font-size: 40px;
 }
 
 .input, .select, .button {
@@ -68,28 +75,38 @@ li {
   font-weight: bold;
 }
 
-.question {
-  background-color: white;
-  padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 3px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
 .footer {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid var(--secondary-color);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  border-top: 1px solid var(--secondary-color);
 }
 
 .footer-link {
   color: var(--primary-color);
   text-decoration: none;
   font-weight: bold;
-  
+
   &:hover {
     text-decoration: underline;
+  }
+}
+
+.errorPageWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  .message {
+    margin: 20px 0 60px;
+    font-weight: 500;
+    font-size: 20px;
   }
 }

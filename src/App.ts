@@ -1,6 +1,5 @@
 import Handlebars from 'handlebars';
 import * as Pages from './pages';
-import { mockQuestions, mockAnswers } from './mockData.ts';
 import './helpers/handlebarsHelpers.ts';
 
 // Register partials
@@ -26,7 +25,7 @@ export default class App {
 
   constructor() {
     this.state = {
-      currentPage: 'createQuestionnaire',
+      currentPage: 'page500',
       questions: [],
       answers: [],
     };
@@ -39,20 +38,9 @@ export default class App {
       template = Handlebars.compile(Pages.Page500);
       html = template({});
     }
-    if (this.state.currentPage === 'createQuestionnaire') {
-      template = Handlebars.compile(Pages.CreatePage);
-      html = template({
-        questions: this.state.questions,
-        createButtonEnabled: this.state.questions.length == 0
-      });
-    }
-    if (this.state.currentPage === 'answerQuestionnaire') {
-      template = Handlebars.compile(Pages.AnswersPage);
-      html = template({
-        questions: mockQuestions,
-        answers: mockAnswers,
-        answerOptions: ['Yes', 'No', 'Maybe'],
-      });
+    if (this.state.currentPage === 'page400') {
+      template = Handlebars.compile(Pages.Page400);
+      html = template({});
     }
 
     this.appElement.textContent = '';
@@ -61,21 +49,6 @@ export default class App {
   }
 
   attachEventListeners() {
-    if (this.state.currentPage === 'createQuestionnaire') {
-      const addButton = document.getElementById('add-question');
-      const createButton = document.getElementById('create-questionnaire');
-
-      if (addButton && createButton) {
-        addButton.addEventListener('click', () => this.addQuestion());
-        createButton.addEventListener('click', () => this.createQuestionnaire());
-      }
-    } else {
-      const submitButton = document.getElementById('submit-answers');
-      if (submitButton) {
-        submitButton.addEventListener('click', () => this.submitAnswers());
-      }
-    }
-
     const footerLinks = document.querySelectorAll('.footer-link');
     footerLinks.forEach(link => {
       link.addEventListener('click', (e: any) => {
@@ -88,25 +61,5 @@ export default class App {
   changePage(page: string) {
     this.state.currentPage = page;
     this.render();
-  }
-
-  addQuestion() {
-    const questionInput: any = document.getElementById('question-input');
-    if (questionInput.value.trim()) {
-      this.state.questions.push(questionInput.value);
-      questionInput.value = '';
-      this.render();
-    }
-  }
-
-  createQuestionnaire() {
-    if (this.state.questions.length > 0) {
-      this.state.currentPage = 'answerQuestionnaire';
-      this.render();
-    }
-  }
-
-  submitAnswers() {
-    alert('Answers submitted!');
   }
 }

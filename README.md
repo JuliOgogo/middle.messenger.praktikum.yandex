@@ -1,4 +1,4 @@
-# Мастер создания опросов
+# Мессенджер
 
 
 
@@ -20,4 +20,4 @@ Netlify: https://glittering-speculoos-7f0e57.netlify.app/
 
 ### На сверстанные макеты:
 
-Страница создания опросника: https://glittering-speculoos-7f0e57.netlify.app/
+Мессенджер: https://glittering-speculoos-7f0e57.netlify.app/

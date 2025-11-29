@@ -25,7 +25,7 @@ export default class App {
 
   constructor() {
     this.state = {
-      currentPage: 'page500',
+      currentPage: 'loginPage',
       questions: [],
       answers: [],
     };
@@ -34,6 +34,10 @@ export default class App {
 
   render() {
     let template, html;
+    if (this.state.currentPage === 'loginPage') {
+      template = Handlebars.compile(Pages.LoginPage);
+      html = template({});
+    }
     if (this.state.currentPage === 'page500') {
       template = Handlebars.compile(Pages.ErrorPage);
       html = template({codeError: '500', message: 'Мы уже фиксим'});

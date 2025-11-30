@@ -1,14 +1,14 @@
 <div class="app">
-    <main class="loginPage">
-        <div class="loginPageWrapper">
+    <main class="authPage">
+        <div class="authPageWrapper">
             <div>
                 <h2 class="mb40">Вход</h2>
-                {{> Input name="login" id="login" type="text" placeholder="Логин"}}
-                {{> Input name="password" id="password" type="password" placeholder="Пароль"}}
+                {{> Input name="login" id="login" type="text" label="Логин"}}
+                {{> Input name="password" id="password" type="password" label="Пароль"}}
             </div>
-            <div>
+            <div class="authPageButtons">
                 {{> Button id="submit-login" text="Авторизоваться"}}
-                {{> Link href="#" class="link" data-page="signIn" text="Нет аккаунта?"}}
+                {{> Link href="#" class="link" data-page="registrationPage" text="Нет аккаунта?"}}
             </div>
         </div>
     </main>

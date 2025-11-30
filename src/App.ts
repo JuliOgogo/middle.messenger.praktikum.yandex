@@ -38,6 +38,10 @@ export default class App {
       template = Handlebars.compile(Pages.LoginPage);
       html = template({});
     }
+    if (this.state.currentPage === 'registrationPage') {
+      template = Handlebars.compile(Pages.RegistrationPage);
+      html = template({});
+    }
     if (this.state.currentPage === 'page500') {
       template = Handlebars.compile(Pages.ErrorPage);
       html = template({codeError: '500', message: 'Мы уже фиксим'});
@@ -53,8 +57,9 @@ export default class App {
   }
 
   attachEventListeners() {
+    const links = document.querySelectorAll('.link');
     const footerLinks = document.querySelectorAll('.footer-link');
-    footerLinks.forEach(link => {
+    [...links, ...footerLinks].forEach(link => {
       link.addEventListener('click', (e: any) => {
         e.preventDefault();
         this.changePage(e.target.dataset.page);

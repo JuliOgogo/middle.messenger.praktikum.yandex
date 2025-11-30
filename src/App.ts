@@ -1,6 +1,7 @@
 import Handlebars from 'handlebars';
 import * as Pages from './pages';
 import './helpers/handlebarsHelpers.ts';
+import {loginInputs, registrationInputs} from "./configData.ts";
 
 // Register partials
 import Input from './components/Input.ts';
@@ -10,6 +11,7 @@ import ErrorMessage from './components/ErrorMessage.ts';
 import Link from './components/Link.ts';
 import Label from './components/Label.ts';
 import Footer from './components/Footer.ts';
+import FormInputs from './components/FormInputs.ts';
 
 Handlebars.registerPartial('Input', Input);
 Handlebars.registerPartial('Button', Button);
@@ -18,6 +20,7 @@ Handlebars.registerPartial('ErrorMessage', ErrorMessage);
 Handlebars.registerPartial('Link', Link);
 Handlebars.registerPartial('Label', Label);
 Handlebars.registerPartial('Footer', Footer);
+Handlebars.registerPartial('FormInputs', FormInputs);
 
 export default class App {
   private state: { questions: string[]; answers: string[]; currentPage: string };
@@ -35,12 +38,26 @@ export default class App {
   render() {
     let template, html;
     if (this.state.currentPage === 'loginPage') {
-      template = Handlebars.compile(Pages.LoginPage);
-      html = template({});
+      template = Handlebars.compile(Pages.AuthPage);
+      html = template({
+        title: 'Вход',
+        inputs: loginInputs,
+        buttonId: 'submit-login',
+        buttonText: 'Авторизоваться',
+        linkDataPage: 'registrationPage',
+        linkText: 'Нет аккаунта?',
+      });
     }
     if (this.state.currentPage === 'registrationPage') {
-      template = Handlebars.compile(Pages.RegistrationPage);
-      html = template({});
+      template = Handlebars.compile(Pages.AuthPage);
+      html = template({
+        title: 'Регистрация',
+        inputs: registrationInputs,
+        buttonId: 'submit-sign-up',
+        buttonText: 'Зарегистрироваться',
+        linkDataPage: 'loginPage',
+        linkText: 'Войти',
+      });
     }
     if (this.state.currentPage === 'page500') {
       template = Handlebars.compile(Pages.ErrorPage);

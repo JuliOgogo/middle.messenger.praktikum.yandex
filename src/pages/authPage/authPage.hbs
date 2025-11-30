@@ -1,0 +1,15 @@
+<div class="app">
+    <main class="authPage">
+        <form class="authPageWrapper">
+            <div>
+                <h2 class="mb40">{{title}}</h2>
+                {{> FormInputs inputs=inputs}}
+            </div>
+            <div class="authPageButtons">
+                {{> Button type="submit" id=buttonId text=buttonText}}
+                {{> Link href="#" class="link" data-page=linkDataPage text=linkText}}
+            </div>
+        </form>
+    </main>
+    {{> Footer}}
+</div>

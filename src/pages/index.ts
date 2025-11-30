@@ -1,5 +1,2 @@
-export { CreatePage } from './createPage';
-export { AnswersPage } from './answerPage';
+export { AuthPage } from './authPage';
 export { ErrorPage } from './errorPage';
-export { LoginPage } from './loginPage';
-export { RegistrationPage } from './registrationPage';

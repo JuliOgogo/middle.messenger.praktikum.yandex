@@ -132,13 +132,8 @@ li {
 }
 
 .footer-link {
-  color: var(--primary-color);
-  text-decoration: none;
+  font-size: 16px;
   font-weight: bold;
-
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
 .errorPageWrapper {
@@ -177,5 +172,66 @@ li {
 
   .authPageButtons {
     margin-top: 30px;
+  }
+}
+
+.profilePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+
+  .avatarWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+
+    .avatar {
+      width: 130px;
+      height: 130px;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      background-color: #EFEFEF;
+    }
+  }
+
+  .contentWrapper {
+    width: 500px;
+  }
+
+  .contentWrapper > *:not(:last-child) {
+    border-bottom: 1px solid #EAEAEA;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+  }
+
+  .profileLink, .exit {
+    font-size: 13px;
+  }
+
+  .exit {
+    color: red;
+  }
+
+  .back {
+    position: absolute;
+    left: 0;
+    padding: 10px;
+  }
+}
+
+.row {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .rowTitle {
+    font-weight: 500;
+  }
+
+  .rowValue {
+    color: var(--secondary-text-color);
   }
 }

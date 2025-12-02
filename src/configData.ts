@@ -12,3 +12,12 @@ export const registrationInputs = [
     { name: "password", id: "password", type: "password", label: "Пароль" },
     { name: "password-check", id: "password-check", type: "password", label: "Пароль (ещё раз)" }
 ];
+
+export const profileRows = [
+    { title: "Почта", value: "qqq@qq.com" },
+    { title: "Логин", value: "ivanivanov" },
+    { title: "Имя", value: "Иван" },
+    { title: "Фамилия", value: "Иванов" },
+    { title: "Имя в чате", value: "Иван" },
+    { title: "Телефон", value: "+7 (909) 967 30 30" },
+];

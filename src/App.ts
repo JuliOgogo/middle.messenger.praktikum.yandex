@@ -1,7 +1,7 @@
 import Handlebars from 'handlebars';
 import * as Pages from './pages';
 import './helpers/handlebarsHelpers.ts';
-import {loginInputs, registrationInputs} from "./configData.ts";
+import {loginInputs, profileRows, registrationInputs} from "./configData.ts";
 
 // Register partials
 import Input from './components/Input.ts';
@@ -12,6 +12,7 @@ import Link from './components/Link.ts';
 import Label from './components/Label.ts';
 import Footer from './components/Footer.ts';
 import FormInputs from './components/FormInputs.ts';
+import ProfileRow from './components/ProfileRow.ts';
 
 Handlebars.registerPartial('Input', Input);
 Handlebars.registerPartial('Button', Button);
@@ -21,6 +22,7 @@ Handlebars.registerPartial('Link', Link);
 Handlebars.registerPartial('Label', Label);
 Handlebars.registerPartial('Footer', Footer);
 Handlebars.registerPartial('FormInputs', FormInputs);
+Handlebars.registerPartial('ProfileRow', ProfileRow);
 
 export default class App {
   private state: { questions: string[]; answers: string[]; currentPage: string };
@@ -59,6 +61,13 @@ export default class App {
         linkText: 'Войти',
       });
     }
+    if (this.state.currentPage === 'profilePage') {
+      template = Handlebars.compile(Pages.ProfilePage);
+      html = template({
+        name: 'Иван',
+        rows: profileRows,
+      });
+    }
     if (this.state.currentPage === 'page500') {
       template = Handlebars.compile(Pages.ErrorPage);
       html = template({codeError: '500', message: 'Мы уже фиксим'});
@@ -75,8 +84,7 @@ export default class App {
 
   attachEventListeners() {
     const links = document.querySelectorAll('.link');
-    const footerLinks = document.querySelectorAll('.footer-link');
-    [...links, ...footerLinks].forEach(link => {
+    links.forEach(link => {
       link.addEventListener('click', (e: any) => {
         e.preventDefault();
         this.changePage(e.target.dataset.page);

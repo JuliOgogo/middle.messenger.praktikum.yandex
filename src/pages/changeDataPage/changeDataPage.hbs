@@ -1,0 +1,15 @@
+<div class="app">
+    <main class="profilePage">
+        <div class="avatarWrapper">
+            <div class="avatar"></div>
+        </div>
+        <form class="contentWrapper">
+            {{#each inputs}}
+                {{> ProfileInput title=this.title name=this.name id=this.id type=this.type label=this.label}}
+            {{/each}}
+            <div class="buttonWrapper">{{> Button type="submit" id=buttonId text=buttonText}}</div>
+        </form>
+        <div class="back">Назад</div>
+    </main>
+    {{> Footer}}
+</div>

@@ -21,3 +21,18 @@ export const profileRows = [
     { title: "Имя в чате", value: "Иван" },
     { title: "Телефон", value: "+7 (909) 967 30 30" },
 ];
+
+export const profileChangeDataInputs = [
+    { name: "email", id: "email", type: "email", title: "Почта", value: "qqq@qq.com" },
+    { name: "login", id: "login", type: "text", title: "Логин", value: "ivanivanov" },
+    { name: "first_name", id: "first_name", type: "text", title: "Имя", value: "Иван" },
+    { name: "second_name", id: "second_name", type: "text", title: "Фамилия", value: "Иванов" },
+    { name: "display_name", id: "display_name", type: "text", title: "Имя в чате", value: "Иван" },
+    { name: "phone", id: "phone", type: "tel", title: "Телефон", value: "+7 (909) 967 30 30" },
+];
+
+export const profileChangePasswordInputs = [
+    { name: "oldPassword", id: "oldPassword", type: "password", title: "Старый пароль", value: '12345' },
+    { name: "newPassword", id: "newPassword", type: "password", title: "Новый пароль", value: '12345' },
+    { name: "password-check", id: "password-check", type: "password", title: "Повторите новый пароль",  value: '12345' }
+];

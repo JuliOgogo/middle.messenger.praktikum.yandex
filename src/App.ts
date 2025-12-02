@@ -1,7 +1,13 @@
 import Handlebars from 'handlebars';
 import * as Pages from './pages';
 import './helpers/handlebarsHelpers.ts';
-import {loginInputs, profileRows, registrationInputs} from "./configData.ts";
+import {
+  loginInputs,
+  profileRows,
+  registrationInputs,
+  profileChangeDataInputs,
+  profileChangePasswordInputs,
+} from "./configData.ts";
 
 // Register partials
 import Input from './components/Input.ts';
@@ -13,6 +19,7 @@ import Label from './components/Label.ts';
 import Footer from './components/Footer.ts';
 import FormInputs from './components/FormInputs.ts';
 import ProfileRow from './components/ProfileRow.ts';
+import ProfileInput from './components/ProfileInput.ts';
 
 Handlebars.registerPartial('Input', Input);
 Handlebars.registerPartial('Button', Button);
@@ -23,6 +30,7 @@ Handlebars.registerPartial('Label', Label);
 Handlebars.registerPartial('Footer', Footer);
 Handlebars.registerPartial('FormInputs', FormInputs);
 Handlebars.registerPartial('ProfileRow', ProfileRow);
+Handlebars.registerPartial('ProfileInput', ProfileInput);
 
 export default class App {
   private state: { questions: string[]; answers: string[]; currentPage: string };
@@ -68,6 +76,20 @@ export default class App {
         rows: profileRows,
       });
     }
+    if (this.state.currentPage === 'changeDataPage') {
+      template = Handlebars.compile(Pages.ChangeDataPage);
+      html = template({
+        inputs: profileChangeDataInputs,
+        buttonText: 'Сохранить',
+      });
+    }
+    if (this.state.currentPage === 'changePasswordPage') {
+      template = Handlebars.compile(Pages.ChangeDataPage);
+      html = template({
+        inputs: profileChangePasswordInputs,
+        buttonText: 'Сохранить',
+      });
+    }
     if (this.state.currentPage === 'page500') {
       template = Handlebars.compile(Pages.ErrorPage);
       html = template({codeError: '500', message: 'Мы уже фиксим'});
@@ -90,6 +112,16 @@ export default class App {
         this.changePage(e.target.dataset.page);
       });
     });
+
+    const submit = document.querySelector('form');
+
+
+    if (submit) {
+      submit.addEventListener('submit', function(event) {
+        event.preventDefault();
+        console.log('Форма отправлена без перезагрузки');
+      });
+    }
   }
 
   changePage(page: string) {

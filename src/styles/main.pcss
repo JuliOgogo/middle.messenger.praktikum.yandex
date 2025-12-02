@@ -218,10 +218,16 @@ li {
     position: absolute;
     left: 0;
     padding: 10px;
+    cursor: pointer;
+  }
+
+  .buttonWrapper {
+    width: 200px;
+    margin: 60px auto auto;
   }
 }
 
-.row {
+.row, .profileInputWrapper {
   height: 40px;
   display: flex;
   align-items: center;
@@ -232,6 +238,14 @@ li {
   }
 
   .rowValue {
+    color: var(--secondary-text-color);
+  }
+
+  .profileInput {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    text-align: right;
     color: var(--secondary-text-color);
   }
 }

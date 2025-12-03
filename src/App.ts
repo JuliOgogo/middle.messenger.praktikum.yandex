@@ -15,6 +15,7 @@ import profileStyles from './pages/profilePage/profilePage.module.pcss';
 
 // Register partials
 import Input from './components/Input.ts';
+import InputLabel from './components/InputLabel.ts';
 import Button from './components/Button.ts';
 import Select from './components/Select.ts';
 import ErrorMessage from './components/ErrorMessage.ts';
@@ -26,6 +27,7 @@ import ProfileRow from './components/ProfileRow.ts';
 import ProfileInput from './components/ProfileInput.ts';
 
 Handlebars.registerPartial('Input', Input);
+Handlebars.registerPartial('InputLabel', InputLabel);
 Handlebars.registerPartial('Button', Button);
 Handlebars.registerPartial('Select', Select);
 Handlebars.registerPartial('ErrorMessage', ErrorMessage);
@@ -34,6 +36,7 @@ Handlebars.registerPartial('Label', Label);
 Handlebars.registerPartial('Footer', Footer);
 Handlebars.registerPartial('FormInputs', FormInputs);
 Handlebars.registerPartial('ProfileRow', ProfileRow);
+Handlebars.registerPartial('ProfileInput', ProfileInput);
 Handlebars.registerPartial('ProfileInput', ProfileInput);
 
 export default class App {
@@ -123,7 +126,6 @@ export default class App {
     });
 
     const submit = document.querySelector('form');
-
 
     if (submit) {
       submit.addEventListener('submit', function(event) {

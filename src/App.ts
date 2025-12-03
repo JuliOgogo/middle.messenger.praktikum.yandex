@@ -9,6 +9,10 @@ import {
   profileChangePasswordInputs,
 } from "./configData.ts";
 
+import authStyles from './pages/authPage/authPage.module.pcss';
+import errorStyles from './pages/errorPage/errorPage.module.pcss';
+import profileStyles from './pages/profilePage/profilePage.module.pcss';
+
 // Register partials
 import Input from './components/Input.ts';
 import Button from './components/Button.ts';
@@ -56,6 +60,7 @@ export default class App {
         buttonText: 'Авторизоваться',
         linkDataPage: 'registrationPage',
         linkText: 'Нет аккаунта?',
+        styles: authStyles,
       });
     }
     if (this.state.currentPage === 'registrationPage') {
@@ -67,6 +72,7 @@ export default class App {
         buttonText: 'Зарегистрироваться',
         linkDataPage: 'loginPage',
         linkText: 'Войти',
+        styles: authStyles,
       });
     }
     if (this.state.currentPage === 'profilePage') {
@@ -74,6 +80,7 @@ export default class App {
       html = template({
         name: 'Иван',
         rows: profileRows,
+        styles: profileStyles,
       });
     }
     if (this.state.currentPage === 'changeDataPage') {
@@ -81,6 +88,7 @@ export default class App {
       html = template({
         inputs: profileChangeDataInputs,
         buttonText: 'Сохранить',
+        styles: profileStyles,
       });
     }
     if (this.state.currentPage === 'changePasswordPage') {
@@ -88,15 +96,16 @@ export default class App {
       html = template({
         inputs: profileChangePasswordInputs,
         buttonText: 'Сохранить',
+        styles: profileStyles,
       });
     }
     if (this.state.currentPage === 'page500') {
       template = Handlebars.compile(Pages.ErrorPage);
-      html = template({codeError: '500', message: 'Мы уже фиксим'});
+      html = template({codeError: '500', message: 'Мы уже фиксим', styles: errorStyles});
     }
     if (this.state.currentPage === 'page400') {
       template = Handlebars.compile(Pages.ErrorPage);
-      html = template({codeError: '400', message: 'Не туда попали'});
+      html = template({codeError: '400', message: 'Не туда попали', styles: errorStyles});
     }
 
     this.appElement.textContent = '';

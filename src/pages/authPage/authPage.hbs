@@ -1,11 +1,11 @@
 <div class="app">
-    <main class="authPage">
-        <form class="authPageWrapper">
+    <main class="{{styles.authPage}}">
+        <form class="{{styles.authPageWrapper}}">
             <div>
                 <h2 class="mb40">{{title}}</h2>
                 {{> FormInputs inputs=inputs}}
             </div>
-            <div class="authPageButtons">
+            <div class="{{styles.authPageButtons}}">
                 {{> Button type="submit" id=buttonId text=buttonText}}
                 {{> Link href="#" class="link" data-page=linkDataPage text=linkText}}
             </div>

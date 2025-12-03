@@ -1,7 +1,7 @@
 <div class="app">
-    <main class="errorPageWrapper">
+    <main class="{{styles.errorPageWrapper}}">
         <h1>{{codeError}}</h1>
-        <p class="message">{{message}}</p>
+        <p class="{{styles.message}}">{{message}}</p>
         {{> Link href="#" class="link" data-page="chats" text="Назад к чатам"}}
     </main>
     {{> Footer}}

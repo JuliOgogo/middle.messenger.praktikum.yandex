@@ -1,23 +1,23 @@
 <div class="app">
-    <main class="profilePage">
-        <div class="avatarWrapper">
-            <div class="avatar"></div>
+    <main class="{{styles.profilePage}}">
+        <div class="{{styles.avatarWrapper}}">
+            <div class="{{styles.avatar}}"></div>
             <div>{{name}}</div>
         </div>
 
-        <div class="contentWrapper">
+        <div class="{{styles.contentWrapper}}">
             {{#each rows}}
                 {{> ProfileRow title=this.title value=this.value}}
             {{/each}}
         </div>
 
-        <div class="contentWrapper">
+        <div class="{{styles.contentWrapper}}">
             <div>{{> Link href="#" class="link profileLink" data-page="changeDataPage" text="Изменить данные"}}</div>
             <div>{{> Link href="#" class="link profileLink" data-page="changePasswordPage" text="Изменить пароль"}}</div>
-            <div class="exit">Выйти</div>
+            <div class="{{styles.exit}}">Выйти</div>
         </div>
 
-        <div class="back">Назад</div>
+        <div class="{{styles.back}}">Назад</div>
     </main>
     {{> Footer}}
 </div>

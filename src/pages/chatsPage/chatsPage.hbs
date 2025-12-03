@@ -1,0 +1,27 @@
+<div class="app">
+    <main class={{styles.chatsPage}}>
+        <section class={{styles.chats}}>
+            {{> Link href="#" class="link chatsBackLink" data-page="profilePage" text="Профиль"}}
+            {{> Input name="search" id="search" type=this.type placeholder="Поиск" value=this.value class=this.styles.searchInput}}
+
+            <div class={{styles.chatsWrapper}}>
+                {{#each chats}}
+                    <div class={{../styles.chat}}>
+                        <div class={{../styles.avatar}}></div>
+                        <div>
+                            <div class={{../styles.name}}>{{name}}</div>
+                            <div class={{../styles.message}}>{{message}}</div>
+                        </div>
+                        <div>
+                            <div class={{../styles.time}}>{{time}}</div>
+                            <div class={{../styles.alerts}}>{{alerts}}</div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+
+        </section>
+        <div class={{styles.dialog}}>Выберите чат чтобы отправить сообщение</div>
+    </main>
+    {{> Footer}}
+</div>

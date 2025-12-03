@@ -9,7 +9,7 @@
             {{/each}}
             <div class="{{styles.buttonWrapper}}">{{> Button type="submit" id=buttonId text=buttonText}}</div>
         </form>
-        <div class="{{styles.back}}">Назад</div>
+        {{> Link href="#" class="link backLink" data-page="chatsPage" text="Назад"}}
     </main>
     {{> Footer}}
 </div>

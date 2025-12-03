@@ -36,3 +36,9 @@ export const profileChangePasswordInputs = [
     { name: "newPassword", id: "newPassword", type: "password", title: "Новый пароль", value: '12345' },
     { name: "password-check", id: "password-check", type: "password", title: "Повторите новый пароль",  value: '12345' }
 ];
+
+export const chats = [
+    { name: "Lera", message: "Hello", time: "11:15", alerts: "1" },
+    { name: "Nastya", message: "...", time: "21:15"},
+    { name: "Lenka Top", message: "hahahah", time: "00:15", alerts: "8" },
+];

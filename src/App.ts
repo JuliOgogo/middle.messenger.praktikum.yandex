@@ -2,6 +2,7 @@ import Handlebars from 'handlebars';
 import * as Pages from './pages';
 import './helpers/handlebarsHelpers.ts';
 import {
+  chats,
   loginInputs,
   profileRows,
   registrationInputs,
@@ -12,6 +13,7 @@ import {
 import authStyles from './pages/authPage/authPage.module.pcss';
 import errorStyles from './pages/errorPage/errorPage.module.pcss';
 import profileStyles from './pages/profilePage/profilePage.module.pcss';
+import chatsStyles from './pages/chatsPage/chatsPage.module.pcss';
 
 // Register partials
 import Input from './components/Input.ts';
@@ -45,7 +47,7 @@ export default class App {
 
   constructor() {
     this.state = {
-      currentPage: 'loginPage',
+      currentPage: 'chatsPage',
       questions: [],
       answers: [],
     };
@@ -76,6 +78,13 @@ export default class App {
         linkDataPage: 'loginPage',
         linkText: 'Войти',
         styles: authStyles,
+      });
+    }
+    if (this.state.currentPage === 'chatsPage') {
+      template = Handlebars.compile(Pages.ChatsPage);
+      html = template({
+        chats: chats,
+        styles: chatsStyles,
       });
     }
     if (this.state.currentPage === 'profilePage') {

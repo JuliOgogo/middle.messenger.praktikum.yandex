@@ -47,7 +47,7 @@ export default class App {
 
   constructor() {
     this.state = {
-      currentPage: 'chatsPage',
+      currentPage: 'loginPage',
       questions: [],
       answers: [],
     };
@@ -83,6 +83,15 @@ export default class App {
     if (this.state.currentPage === 'chatsPage') {
       template = Handlebars.compile(Pages.ChatsPage);
       html = template({
+        chats: chats,
+        styles: chatsStyles,
+        emptyMessage: "Выберите чат чтобы отправить сообщение",
+      });
+    }
+    if (this.state.currentPage === 'chatsWithDialogPage') {
+      template = Handlebars.compile(Pages.ChatsPage);
+      html = template({
+        selectedDialogName: 'Lenka',
         chats: chats,
         styles: chatsStyles,
       });

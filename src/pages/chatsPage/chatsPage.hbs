@@ -21,7 +21,20 @@
             </div>
 
         </section>
-        <div class={{styles.dialog}}>Выберите чат чтобы отправить сообщение</div>
+        <div class={{styles.dialog}}>
+            <div>{{emptyMessage}}</div>
+
+            {{#if selectedDialogName}}
+            <div class={{styles.selectedDialog}}>
+                <div class={{styles.selectedDialogName}}>{{selectedDialogName}}</div>
+                <div>{{selectedDialogMessages}}</div>
+                <form class={{styles.form}}>
+                    {{> Input name="message" id="message" type=this.type placeholder="Сообщение" value=this.value class=styles.messageInput}}
+                    {{> Button type="submit" id="send" text="Отправить"}}
+                </form>
+            {{/if}}
+        </div>
+        </div>
     </main>
     {{> Footer}}
 </div>

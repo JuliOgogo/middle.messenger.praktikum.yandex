@@ -7,4 +7,5 @@ export default `<footer class="footer">
   {{> Link href="#" class="link footer-link" data-page="changeDataPage" text="Change data"}}
   {{> Link href="#" class="link footer-link" data-page="changePasswordPage" text="Change password"}}
   {{> Link href="#" class="link footer-link" data-page="chatsPage" text="Chats"}}
+  {{> Link href="#" class="link footer-link" data-page="chatsWithDialogPage" text="Chats with dialog"}}
 </footer>`

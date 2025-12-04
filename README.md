@@ -1,10 +1,7 @@
-
-# Мастер создания опросов
-
-Очень хитрый опросник, который показывает только те ответы, в которых есть позитивные пересечения: оба ответа "да"
+# Мессенджер
 
 ## Дизайн
-Макеты находятся в папке ui проекта
+https://www.figma.com/design/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0-1&p=f&t=wibN8gfqAdguMBbb-0
 
 ## Установка
 Установить зависимости проекта: `npm install`
@@ -21,4 +18,4 @@ Netlify: https://glittering-speculoos-7f0e57.netlify.app/
 
 ### На сверстанные макеты:
 
-Страница создания опросника: https://questionnaire-njkadsfh.netlify.app
+Мессенджер: https://glittering-speculoos-7f0e57.netlify.app/

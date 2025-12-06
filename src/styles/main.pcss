@@ -1,0 +1,179 @@
+:root {
+  --primary-color: #3369F3;
+  --secondary-color: #E4EDFD;
+  --background-color: #FFFFFF;
+  --text-color: #1E1E1E;
+  --secondary-text-color: #999999;
+  --error-color: #e74c3c;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Inter, sans-serif;
+}
+
+h1, h2, h3 {
+  color: var(--text-color);
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+.mb40 {
+  margin-bottom: 40px;
+}
+
+.app {
+  background-color: var(--background-color);
+  height: 100vh;
+  width: 100vw;
+}
+
+.select, .button {
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.inputLabelWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 10px 0;
+  color: var(--secondary-text-color);
+
+  .label {
+    font-size: 10px;
+  }
+
+  .inputLabel {
+    width: 100%;
+    padding: 8px 0;
+    font-size: 12px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--primary-color);
+  }
+
+  .inputError {
+    margin-top: 10px;
+    font-size: 8px;
+    color: var(--error-color);
+  }
+}
+
+.button {
+  border-radius: 8px;
+}
+
+.button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 80%, black);
+  }
+
+  &:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+  }
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: white;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 11px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.profileLink {
+  font-size: 13px;
+}
+
+.backLink {
+  position: absolute;
+  left: 0;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text-color);
+}
+
+.chatsBackLink {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--text-color);
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  border-top: 1px solid var(--secondary-color);
+}
+
+.footer-link {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.row, .profileInputWrapper {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .rowTitle {
+    font-weight: 500;
+  }
+
+  .rowValue {
+    color: var(--secondary-text-color);
+  }
+
+  .profileInput {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    text-align: right;
+    color: var(--secondary-text-color);
+  }
+}

@@ -1,0 +1,23 @@
+<div class="app">
+    <main class="{{styles.profilePage}}">
+        <div class="{{styles.avatarWrapper}}">
+            <div class="{{styles.avatar}}"></div>
+            <div>{{name}}</div>
+        </div>
+
+        <div class="{{styles.contentWrapper}}">
+            {{#each rows}}
+                {{> ProfileRow title=this.title value=this.value}}
+            {{/each}}
+        </div>
+
+        <div class="{{styles.contentWrapper}}">
+            <div>{{> Link href="#" class="link profileLink" data-page="changeDataPage" text="Изменить данные"}}</div>
+            <div>{{> Link href="#" class="link profileLink" data-page="changePasswordPage" text="Изменить пароль"}}</div>
+            <div class="{{styles.exit}}">Выйти</div>
+        </div>
+
+        {{> Link href="#" class="link backLink" data-page="chatsPage" text="Назад"}}
+    </main>
+    {{> Footer}}
+</div>

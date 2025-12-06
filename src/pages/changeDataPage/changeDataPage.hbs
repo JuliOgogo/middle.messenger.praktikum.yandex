@@ -1,0 +1,15 @@
+<div class="app">
+    <main class="{{styles.profilePage}}">
+        <div class="{{styles.avatarWrapper}}">
+            <div class="{{styles.avatar}}"></div>
+        </div>
+        <form class="{{styles.contentWrapper}}">
+            {{#each inputs}}
+                {{> ProfileInput title=this.title name=this.name id=this.id type=this.type label=this.label}}
+            {{/each}}
+            <div class="{{styles.buttonWrapper}}">{{> Button type="submit" id=buttonId text=buttonText}}</div>
+        </form>
+        {{> Link href="#" class="link backLink" data-page="chatsPage" text="Назад"}}
+    </main>
+    {{> Footer}}
+</div>

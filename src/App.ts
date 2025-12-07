@@ -1,14 +1,13 @@
 import Handlebars from 'handlebars';
 import * as Pages from './pages';
-import './helpers/handlebarsHelpers.ts';
 import {
-  chats,
-  loginInputs,
-  profileRows,
-  registrationInputs,
-  profileChangeDataInputs,
-  profileChangePasswordInputs,
-} from "./configData.ts";
+    chats,
+    loginInputs,
+    profileRows,
+    registrationInputs,
+    profileChangeDataInputs,
+    profileChangePasswordInputs,
+} from './configData.ts';
 
 import authStyles from './pages/authPage/authPage.module.pcss';
 import errorStyles from './pages/errorPage/errorPage.module.pcss';
@@ -42,126 +41,128 @@ Handlebars.registerPartial('ProfileInput', ProfileInput);
 Handlebars.registerPartial('ProfileInput', ProfileInput);
 
 export default class App {
-  private state: { questions: string[]; answers: string[]; currentPage: string };
-  private appElement:  HTMLElement | null;
+    private state: { questions: string[]; answers: string[]; currentPage: string };
 
-  constructor() {
-    this.state = {
-      currentPage: 'loginPage',
-      questions: [],
-      answers: [],
-    };
-    this.appElement = document.getElementById('app');
-  }
+    private appElement: HTMLElement | null;
 
-  render() {
-    let template, html;
-    if (this.state.currentPage === 'loginPage') {
-      template = Handlebars.compile(Pages.AuthPage);
-      html = template({
-        title: 'Вход',
-        inputs: loginInputs,
-        buttonId: 'submit-login',
-        buttonText: 'Авторизоваться',
-        linkDataPage: 'registrationPage',
-        linkText: 'Нет аккаунта?',
-        styles: authStyles,
-      });
-    }
-    if (this.state.currentPage === 'registrationPage') {
-      template = Handlebars.compile(Pages.AuthPage);
-      html = template({
-        title: 'Регистрация',
-        inputs: registrationInputs,
-        buttonId: 'submit-sign-up',
-        buttonText: 'Зарегистрироваться',
-        linkDataPage: 'loginPage',
-        linkText: 'Войти',
-        styles: authStyles,
-      });
-    }
-    if (this.state.currentPage === 'chatsPage') {
-      template = Handlebars.compile(Pages.ChatsPage);
-      html = template({
-        chats: chats,
-        styles: chatsStyles,
-        emptyMessage: "Выберите чат чтобы отправить сообщение",
-      });
-    }
-    if (this.state.currentPage === 'chatsWithDialogPage') {
-      template = Handlebars.compile(Pages.ChatsPage);
-      html = template({
-        selectedDialogName: 'Lenka',
-        chats: chats,
-        styles: chatsStyles,
-      });
-    }
-    if (this.state.currentPage === 'profilePage') {
-      template = Handlebars.compile(Pages.ProfilePage);
-      html = template({
-        name: 'Иван',
-        rows: profileRows,
-        styles: profileStyles,
-      });
-    }
-    if (this.state.currentPage === 'changeDataPage') {
-      template = Handlebars.compile(Pages.ChangeDataPage);
-      html = template({
-        inputs: profileChangeDataInputs,
-        buttonText: 'Сохранить',
-        styles: profileStyles,
-      });
-    }
-    if (this.state.currentPage === 'changePasswordPage') {
-      template = Handlebars.compile(Pages.ChangeDataPage);
-      html = template({
-        inputs: profileChangePasswordInputs,
-        buttonText: 'Сохранить',
-        styles: profileStyles,
-      });
-    }
-    if (this.state.currentPage === 'page500') {
-      template = Handlebars.compile(Pages.ErrorPage);
-      html = template({codeError: '500', message: 'Мы уже фиксим', styles: errorStyles});
-    }
-    if (this.state.currentPage === 'page400') {
-      template = Handlebars.compile(Pages.ErrorPage);
-      html = template({codeError: '400', message: 'Не туда попали', styles: errorStyles});
+    constructor() {
+        this.state = {
+            currentPage: 'loginPage',
+            questions: [],
+            answers: [],
+        };
+        this.appElement = document.getElementById('app');
     }
 
-    if (this.appElement && html) {
-      this.appElement.textContent = '';
-      this.appElement.insertAdjacentHTML('beforeend', html);
-      this.attachEventListeners();
-    }
-  }
-
-  attachEventListeners() {
-    const links = document.querySelectorAll('.link');
-    links.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        const target = e.target as HTMLElement;
-        const page = target.dataset?.page;
-        if (page) {
-          this.changePage(page);
+    render() {
+        let template;
+        let html;
+        if (this.state.currentPage === 'loginPage') {
+            template = Handlebars.compile(Pages.AuthPage);
+            html = template({
+                title: 'Вход',
+                inputs: loginInputs,
+                buttonId: 'submit-login',
+                buttonText: 'Авторизоваться',
+                linkDataPage: 'registrationPage',
+                linkText: 'Нет аккаунта?',
+                styles: authStyles,
+            });
         }
-      });
-    });
+        if (this.state.currentPage === 'registrationPage') {
+            template = Handlebars.compile(Pages.AuthPage);
+            html = template({
+                title: 'Регистрация',
+                inputs: registrationInputs,
+                buttonId: 'submit-sign-up',
+                buttonText: 'Зарегистрироваться',
+                linkDataPage: 'loginPage',
+                linkText: 'Войти',
+                styles: authStyles,
+            });
+        }
+        if (this.state.currentPage === 'chatsPage') {
+            template = Handlebars.compile(Pages.ChatsPage);
+            html = template({
+                chats,
+                styles: chatsStyles,
+                emptyMessage: 'Выберите чат чтобы отправить сообщение',
+            });
+        }
+        if (this.state.currentPage === 'chatsWithDialogPage') {
+            template = Handlebars.compile(Pages.ChatsPage);
+            html = template({
+                chats,
+                selectedDialogName: 'Lenka',
+                styles: chatsStyles,
+            });
+        }
+        if (this.state.currentPage === 'profilePage') {
+            template = Handlebars.compile(Pages.ProfilePage);
+            html = template({
+                name: 'Иван',
+                rows: profileRows,
+                styles: profileStyles,
+            });
+        }
+        if (this.state.currentPage === 'changeDataPage') {
+            template = Handlebars.compile(Pages.ChangeDataPage);
+            html = template({
+                inputs: profileChangeDataInputs,
+                buttonText: 'Сохранить',
+                styles: profileStyles,
+            });
+        }
+        if (this.state.currentPage === 'changePasswordPage') {
+            template = Handlebars.compile(Pages.ChangeDataPage);
+            html = template({
+                inputs: profileChangePasswordInputs,
+                buttonText: 'Сохранить',
+                styles: profileStyles,
+            });
+        }
+        if (this.state.currentPage === 'page500') {
+            template = Handlebars.compile(Pages.ErrorPage);
+            html = template({ codeError: '500', message: 'Мы уже фиксим', styles: errorStyles });
+        }
+        if (this.state.currentPage === 'page400') {
+            template = Handlebars.compile(Pages.ErrorPage);
+            html = template({ codeError: '400', message: 'Не туда попали', styles: errorStyles });
+        }
 
-    const submit = document.querySelector('form');
-
-    if (submit) {
-      submit.addEventListener('submit', function(event) {
-        event.preventDefault();
-        console.log('Форма отправлена без перезагрузки');
-      });
+        if (this.appElement && html) {
+            this.appElement.textContent = '';
+            this.appElement.insertAdjacentHTML('beforeend', html);
+            this.attachEventListeners();
+        }
     }
-  }
 
-  changePage(page: string) {
-    this.state.currentPage = page;
-    this.render();
-  }
+    attachEventListeners() {
+        const links = document.querySelectorAll('.link');
+        links.forEach((link) => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                const target = e.target as HTMLElement;
+                const page = target.dataset?.page;
+                if (page) {
+                    this.changePage(page);
+                }
+            });
+        });
+
+        const submit = document.querySelector('form');
+
+        if (submit) {
+            submit.addEventListener('submit', (event) => {
+                event.preventDefault();
+                console.log('Форма отправлена без перезагрузки');
+            });
+        }
+    }
+
+    changePage(page: string) {
+        this.state.currentPage = page;
+        this.render();
+    }
 }

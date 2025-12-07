@@ -1,76 +1,76 @@
 .chatsPage {
-    height: 100%;
+  height: 100%;
+  display: flex;
+
+  .chats {
+    height: calc(100% - 59px);
+    min-width: 310px;
     display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 8px;
+    background-color: #FBFBFB;
 
-    .chats {
-        height: calc(100% - 59px);
-        min-width: 310px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        padding: 20px 8px;
-        background-color: #FBFBFB;
-
-        .searchInput {
-            height: 30px;
-            border: none;
-            outline: none;
-            text-align: center;
-            background-color: #EFEFEF;
-            border-radius: 8px;
-        }
-
-        .chat {
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #EFEFEF;
-
-            .avatar {
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                background-color: #EFEFEF;
-            }
-        }
+    .searchInput {
+      height: 30px;
+      border: none;
+      outline: none;
+      text-align: center;
+      background-color: #EFEFEF;
+      border-radius: 8px;
     }
 
-    .dialog {
-        width: 100%;
-        height: calc(100% - 59px);
+    .chat {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #EFEFEF;
+
+      .avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #EFEFEF;
+      }
+    }
+  }
+
+  .dialog {
+    width: 100%;
+    height: calc(100% - 59px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .selectedDialog {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+
+      .selectedDialogName {
+        border-bottom: 1px solid #EFEFEF;
+      }
+
+      .form {
         display: flex;
-        justify-content: center;
         align-items: center;
+        gap: 20px;
+      }
 
-        .selectedDialog {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 20px;
-
-            .selectedDialogName {
-                border-bottom: 1px solid #EFEFEF;
-            }
-
-            .form {
-                display: flex;
-                align-items: center;
-                gap: 20px;
-            }
-
-            .messageInput {
-                min-width: 90%;
-                height: 35px;
-                border: none;
-                outline: none;
-                text-align: left;
-                padding-left: 20px;
-                background-color: #EFEFEF;
-                border-radius: 8px;
-            }
-        }
+      .messageInput {
+        min-width: 90%;
+        height: 35px;
+        border: none;
+        outline: none;
+        text-align: left;
+        padding-left: 20px;
+        background-color: #EFEFEF;
+        border-radius: 8px;
+      }
     }
+  }
 }

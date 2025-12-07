@@ -21,6 +21,5 @@
     "sourceMap": true,
     "strictNullChecks": true
   },
-  "include": ["src"],
-  "exclude": ["*.config.js"]
+  "include": ["src"]
 }

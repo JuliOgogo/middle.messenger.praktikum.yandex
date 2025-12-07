@@ -43,7 +43,7 @@ Handlebars.registerPartial('ProfileInput', ProfileInput);
 
 export default class App {
   private state: { questions: string[]; answers: string[]; currentPage: string };
-  private appElement: any;
+  private appElement:  HTMLElement | null;
 
   constructor() {
     this.state = {
@@ -129,17 +129,24 @@ export default class App {
       html = template({codeError: '400', message: 'Не туда попали', styles: errorStyles});
     }
 
-    this.appElement.textContent = '';
-    this.appElement.insertAdjacentHTML('beforeend', html);
-    this.attachEventListeners();
+    if (this.appElement && html) {
+      this.appElement.textContent = '';
+      this.appElement.insertAdjacentHTML('beforeend', html);
+      this.attachEventListeners();
+    }
   }
 
   attachEventListeners() {
     const links = document.querySelectorAll('.link');
     links.forEach(link => {
-      link.addEventListener('click', (e: any) => {
+      link.addEventListener('click', (e) => {
         e.preventDefault();
-        this.changePage(e.target.dataset.page);
+
+        const target = e.target as HTMLElement;
+        const page = target.dataset?.page;
+        if (page) {
+          this.changePage(page);
+        }
       });
     });
 

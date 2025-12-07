@@ -1,9 +1,9 @@
 :root {
   --primary-color: #3369F3;
   --secondary-color: #E4EDFD;
-  --background-color: #FFFFFF;
+  --background-color: #FFF;
   --text-color: #1E1E1E;
-  --secondary-text-color: #999999;
+  --secondary-text-color: #999;
   --error-color: #e74c3c;
 }
 
@@ -76,15 +76,12 @@ h2 {
 }
 
 .button {
-  border-radius: 8px;
-}
-
-.button {
   background-color: var(--primary-color);
   color: white;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  border-radius: 8px;
 
   &:hover {
     background-color: color-mix(in srgb, var(--primary-color) 80%, black);
@@ -106,7 +103,7 @@ li {
   margin: 10px 0;
   padding: 10px;
   border-radius: 3px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px rgb(0 0 0 / 10%);
 }
 
 .link {
